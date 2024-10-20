@@ -1,7 +1,6 @@
 <template>
   <div class="center">
     <h1 class="mainText">Опрос на новый год от Mega-Personal!</h1>
-    <button class="button_main">Начать голосование</button>
   </div>
 </template>
 
@@ -10,7 +9,6 @@
 <style scoped>
 .center {
   flex-direction: column;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

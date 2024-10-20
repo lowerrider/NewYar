@@ -1,26 +1,49 @@
 <script setup>
-import Main from "./components/Main.vue";
-import Questions from "./components/Questions.vue";
-import List from "./components/List.vue";
-import QuestionsTwo from "./components/QuestionsTwo.vue";
+import { useRouter, useRoute } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
+
+const goToQuestions = () => {
+  router.push("/questions");
+};
 </script>
 
 <template>
   <div class="content">
-    <!-- <Main /> -->
-    <!-- <List /> -->
+    <div class="snowflakes">
+      <div
+        class="snowflake"
+        style="left: 10%; animation-duration: 5s; animation-delay: 0s"></div>
+      <div
+        class="snowflake"
+        style="left: 30%; animation-duration: 7s; animation-delay: 1s"></div>
+      <div
+        class="snowflake"
+        style="left: 50%; animation-duration: 6s; animation-delay: 2s"></div>
+      <div
+        class="snowflake"
+        style="left: 70%; animation-duration: 5s; animation-delay: 3s"></div>
+      <div
+        class="snowflake"
+        style="left: 90%; animation-duration: 8s; animation-delay: 4s"></div>
+    </div>
+    <div class="tree"></div>
 
-    <Questions />
+    <router-view></router-view>
 
-    <!-- <QuestionsTwo /> -->
+    <button v-if="route.name !== 'Questions'" @click="goToQuestions">
+      Перейти к вопросам
+    </button>
   </div>
 </template>
 
 <style scoped>
-/* .content {
+.content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-} */
+  justify-content: center;
+  height: 100vh; /* Занимает всю высоту окна */
+}
 </style>

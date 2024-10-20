@@ -11,8 +11,7 @@
       @input="onChangeSearchInput"
       class="inputText"
       type="text"
-      placeholder="Поиск..."
-    />
+      placeholder="Поиск..." />
     <MemberList :items="items" />
   </div>
 </template>
