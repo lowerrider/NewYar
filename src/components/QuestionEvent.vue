@@ -14,14 +14,12 @@ const emit = defineEmits(["update:selected"]);
 
 const selected = ref("");
 
-// Хранит элементы для выбора
 const items = ref([]);
 
-// Функция для получения данных
 const fetchItems = async () => {
   try {
     const { data } = await axios.get(
-      "https://5730997ff4827f80.mokky.dev/members"
+      "https://b5862cf2cca63d34.mokky.dev/members"
     );
     items.value = data;
   } catch (e) {
@@ -29,29 +27,25 @@ const fetchItems = async () => {
   }
 };
 
-// Опции для компонента VueSelect
 const options = computed(() =>
   items.value.map((e) => ({
     label: e.title,
-    value: e.id,
+    value: e.personId,
   }))
 );
 
-// Синхронизация выбранного значения с родительским компонентом
 watch(
   () => props.selected,
   (newValue) => {
-    selected.value = newValue; // Сохраняем выбранное значение
+    selected.value = newValue;
   },
-  { immediate: true } // Срабатывает сразу, чтобы отобразить выбранное значение при первом рендере
+  { immediate: true }
 );
 
-// Эмитим значение при изменении
 watch(selected, (newValue) => {
   emit("update:selected", { id: props.id, value: newValue });
 });
 
-// Получение данных при монтировании компонента
 onMounted(fetchItems);
 </script>
 
@@ -79,9 +73,9 @@ onMounted(fetchItems);
   margin: 30px;
 }
 .select {
-  margin: 60px auto; /* Центрируем селект */
-  width: 100%; /* Делаем ширину 100% */
-  max-width: 600px; /* Максимальная ширина для адаптивности */
+  margin: 60px auto;
+  width: 100%;
+  max-width: 600px;
 }
 .content2 {
   display: flex;
